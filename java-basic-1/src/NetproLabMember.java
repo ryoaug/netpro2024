@@ -7,15 +7,16 @@ public class NetproLabMember {
     public static void main(String[] args) {
         int[][] members = new int[years][columns];
         Random random = new Random();
-        int randomNumber = random.nextInt(6) - 3;
+        Random random2 = new Random();
+        //int randomNumber = random.nextInt(8) - 3;
         double totalRatio = 1;
         for (int i = 0; i < years; i++) {
             // 学生の総数
             members[i][0] = 120 + (random.nextInt(20) - 10);
             // 女性の割合(%)
-            members[i][1] = (int) (members[i][0] * 0.2);
+            members[i][1] = (int) (members[i][0] - ((members[i][0]*(0.8 - 0.01*i))));
             // 岩井研の人数
-            members[i][2] = 10 + randomNumber;
+            members[i][2] = 10 + (random2.nextInt(7) - 3);
 
             // 男性数を求める
             int men = members[i][0] - (int) (members[i][0] * ((float) members[i][1] / 100));
@@ -24,7 +25,9 @@ public class NetproLabMember {
             // 男性の中から岩井研のメンバーを取り出す組み合わせ
             long menRatio = combination(men, members[i][2]);
             // 岩井研の人数に男性しか入らない割合
-            totalRatio *= (double) menRatio / cpsRatio;
+            //System.out.println(members[i][0]);
+            //System.out.println(members[i][1]);
+            //System.out.println(members[i][2]);
         }
         System.out.println(totalRatio);
     }
