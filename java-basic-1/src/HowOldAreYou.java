@@ -30,22 +30,25 @@ public class HowOldAreYou {
                 if(age >= 120 || age < 0){
                     System.out.println("もう一度入力してください");
                 }
-                System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
-                if (age <= 5) {
-                    System.out.println("令和" + (6 - age) + "年");
-                }else if(age >= 6 && age >= 35){
-                    System.out.println("平成" + (36 - age) + "年");
-                } else if (age >= 36 && age <= 98) {
-                    System.out.println("昭和" + (99 - age) + "年");
-                } else if (age >= 99 && age <= 112) {
-                    System.out.println("大正" + (113 - age) + "年");
-                } else if (age >= 113 && age <= 119) {
+                if (age >= 113 && age <= 119) {
+                    System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
                     System.out.println("明治" + (157 - age) + "年");
+                }else if (age >= 99 && age <= 112) {
+                    System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
+                    System.out.println("大正" + (113 - age) + "年");
+                }else if (age >= 36 && age <= 98) {
+                    System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
+                    System.out.println("昭和" + (99 - age) + "年");
+                }else if(age >= 6 && age<= 35){
+                    System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
+                    System.out.println("平成" + (36 - age) + "年");
+                }else if (age >= 5 && age < 120) {
+                    System.out.println("あなたは2030年の年齢は" + (age + 6) + "歳ですね。");
+                    System.out.println("令和" + (6 - age) + "年");
                 }
             } catch (IOException e) {
                 System.out.println(e);
             }
-
         }
     }
 }
