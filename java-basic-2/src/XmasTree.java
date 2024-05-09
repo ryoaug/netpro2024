@@ -1,11 +1,11 @@
 public class XmasTree {
 
     public static void main(String[] args) {
-        int N=25;
+        int N=10;
         for (int j = 0; j < N; j++) {
 
             for (int i = 0; i <= N-j; i++) {
-                System.out.print("+");
+                System.out.print(",");
             }
 
             for (int i = 0; i <= j*2; i++) {
@@ -13,12 +13,12 @@ public class XmasTree {
             }
 
             for (int i = 0; i <= N-j; i++) {
-                System.out.print("+");
+                System.out.print(",");
             }
 
             System.out.print("\n");
         }
-        int M = 10;
+        int M = 8; //幹の長さ
         int n = N*2;
         for(int j = 0; j < M; j++){
 
