@@ -18,7 +18,7 @@ public class XmasTree {
 
             System.out.print("\n");
         }
-        int M = 8; //幹の長さ
+        int M = 6; //幹の長さ
         int n = N*2;
         for(int j = 0; j < M; j++){
 
