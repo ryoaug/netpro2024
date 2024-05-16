@@ -67,17 +67,52 @@ public class Renshu {
         p[i] = temp;
     }
     public boolean swapTwoArrays(int[] a, int[] b){
-        int[] temp = {};
+        int temp = 0;
         if(a.length == b.length){
             for(int i = 0; i < a.length; i++){
-                a[i] = temp[i];
+                temp = a[i];
                 a[i] = b[i];
-                temp[i] = a[i];
+                b[i] = temp;
             }
             return true;
         }else{
             return false;
         }
     }
-    
-}
+    public void bubble_sort(int[] d) {
+            // iはi回目の交換する回数
+            for (int i = d.length-1; i > 0; i-- ) {
+                // j は交換する箇所の前からの番号を示している
+                for (int j = 0; j < i; j++) {
+                    if(d[j]>d[j+1]){
+                      //降順にしたい場合は不等号を逆に
+                      int box = d[j];
+                      d[j] = d[j+1];
+                      d[j+1] = box;
+                      System.out.println(d[j] + ":" +d[j+1]);
+                    } else{
+                      //そのまま
+                    }
+                }
+            }
+    }
+    public void quickSort(int[] d){
+        int a = 0;
+        int b = d.length-1;
+            if (a>=b) {
+                return;
+            }
+            int p = d[(a + b)/2];
+            int l = a, r = b, tmp;
+            while(l<r) {
+                while(d[l] < p) { l++; }
+                while(d[r] > p) { r--; }
+                if (l<=r) {
+                    tmp = d[l]; d[l] = d[r]; d[r] = tmp;
+                    l++; r--;
+                }
+            }
+            quickSort(d);  // ピボットより左側をクイックソート
+            quickSort(d); // ピボットより右側をクイックソート
+        }
+    }

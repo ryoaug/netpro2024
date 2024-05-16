@@ -5,19 +5,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class XmasTCPServer {
+public class ReserveSystemServer {
 
-    private static final int times = 2;
+    private static final int times = 1;
 
-    private static String serverProcess(String content) {
+    private static int serverProcess(int count) {
         StringBuilder sb = new StringBuilder();
         sb.append("🎁");
         for (int i = 0; i < times; i++) {
-            sb.append(content);
+            sb.append(count);
         }
         sb.append("🎁");
         String result = sb.toString();
-        return result;
+        return result.length();
     }
 
     public static void main(String arg[]) {
@@ -36,18 +36,18 @@ public class XmasTCPServer {
 
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 
-            XmasPresent present = (XmasPresent) ois.readObject();// Integerクラスでキャスト。
+            ReserveSystem reserve = (ReserveSystem) ois.readObject();// Integerクラスでキャスト。
 
-            String msgPresent = present.getMessage();
-            System.out.println("メッセージは" + msgPresent);
-            String presentFromClient = present.getContent();
-            System.out.println("プレゼントの内容は" + presentFromClient);
+            int redate = reserve.getDate();
+            System.out.println("メッセージは" + redate);
+            int reserveFromClient = reserve.getCount();
+            System.out.println("プレゼントの内容は" + reserveFromClient);
 
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-            XmasPresent response = new XmasPresent();
-            response.setMessage("サーバーです。メリークリスマス！\n" + presentFromClient + "ありがとう。\nプレゼントのお返しは" + times + "倍" + "です");
-            response.setContent(serverProcess(presentFromClient));
+            ReserveSystem response = new ReserveSystem();
+            //response.setDate("\n" +  presentFromClient + "ありがとう。\nプレゼントのお返しは" + times + "倍" + "です");
+            response.setCount(reserveFromClient);
 
             oos.writeObject(response);
             oos.flush();

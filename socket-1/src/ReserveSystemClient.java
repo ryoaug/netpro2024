@@ -4,7 +4,7 @@ import java.net.BindException;
 import java.net.Socket; //ネットワーク関連のパッケージを利用する
 import java.util.Scanner;
 
-public class XmasTCPClient {
+public class ReserveSystemClient {
 
     public static void main(String arg[]) {
         try {
@@ -15,30 +15,30 @@ public class XmasTCPClient {
             Socket socket = new Socket("localhost", port);
             System.out.println("接続されました");
 
-            System.out.println("プレゼントを送ります");
+            System.out.println("希望の予約日時を入力してください(例:0517)");
             ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
-            System.out.println("メッセージを入力してください(例:メリークリスマス) ↓");
-            String message = scanner.next();
-            System.out.println("プレゼントの内容を入力してください(例:お菓子) ↓");
-            String content = scanner.next();
+            //System.out.println("");
+            int date = scanner.nextInt();
+            System.out.println("何人ですか？(例:3)");
+            int count = scanner.nextInt();
             scanner.close();
 
-            XmasPresent present = new XmasPresent();
-            present.setMessage(message);
-            present.setContent(content);
+            ReserveSystem reserve = new ReserveSystem();
+            reserve.setDate(date);
+            reserve.setCount(count);
 
-            oos.writeObject(present);
+            oos.writeObject(reserve);
             oos.flush();
 
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 
-            XmasPresent okaeshiPresent = (XmasPresent) ois.readObject();
+            ReserveSystem okaeshiPresent = (ReserveSystem) ois.readObject();
 
-            String replayMsg = okaeshiPresent.getMessage();
-            System.out.println("サーバからのメッセージは" + replayMsg);
-            String replayContent = okaeshiPresent.getContent();
-            System.out.println(replayContent + "をもらいました！");
+            int replayRe = okaeshiPresent.getCount();
+            System.out.println("承知しました。" + replayRe + "人で予約します。");
+            /*int replayContent = okaeshiPresent.getCount();
+            System.out.println(replayContent + "をもらいました！");*/
 
             ois.close();
             oos.close();
