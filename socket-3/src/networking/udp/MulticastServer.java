@@ -1,19 +1,27 @@
 package networking.udp;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
+//サーバーはマルチキャスト'224.0.0.1'、ポート'12345'を使ってマルチキャストソケットを作成し、メッセージの受信を待機
+//クライアントがそれに参加してメッセージを送信
+//サーバーがメッセージを受信してコンソールに出力
+
 public class MulticastServer {
     public static void main(String[] args) {
         try {
             // マルチキャストグループのIPアドレスとポート番号を指定
-            InetAddress group = InetAddress.getByName("239.0.0.1");
+            // 自分のPC内でやる場合
+            InetAddress group = InetAddress.getByName("224.0.0.1");
+            // 隣の人とやる場合
+            // InetAddress group = InetAddress.getByName("239.0.0.1");
             int port = 12345;
 
             // マルチキャストソケットを作成し、指定したグループとポートに参加
             MulticastSocket multicastSocket = new MulticastSocket(port);
-            multicastSocket.joinGroup(group);
+            multicastSocket.joinGroup(group); // マルチキャストグループに参加
 
             System.out.println("Server started. Waiting for commands...");
 

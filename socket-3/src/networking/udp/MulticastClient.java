@@ -1,4 +1,5 @@
 package networking.udp;
+
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -7,8 +8,10 @@ import java.net.InetAddress;
 public class MulticastClient {
     public static void main(String[] args) {
         try {
-            // マルチキャストグループのIPアドレスとポート番号を指定
-            InetAddress group = InetAddress.getByName("239.0.0.1");
+            // 自分のPC内でやる場合
+            InetAddress group = InetAddress.getByName("224.0.0.1");
+            // 隣の人とやる場合
+            // InetAddress group = InetAddress.getByName("239.0.0.1");
             int port = 12345;
 
             // データ送信用のソケットを作成
