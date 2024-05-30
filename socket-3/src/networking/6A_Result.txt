@@ -1,0 +1,13 @@
+入力してね（終了なら exit）: aaa
+サーバからの返信: AAA
+入力してね（終了なら exit）: ewbhjieubh
+サーバからの返信: EWBHJIEUBH
+入力してね（終了なら exit）: euiqrhgiuwghop
+サーバからの返信: EUIQRHGIUWGHOP
+入力してね（終了なら exit）: oiuuiyavawkf
+サーバからの返信: OIUUIYAVAWKF
+入力してね（終了なら exit）: aiueo
+サーバからの返信: AIUEO
+入力してね（終了なら exit）: kakikukeko
+サーバからの返信: KAKIKUKEKO
+入力してね（終了なら exit）: exit
